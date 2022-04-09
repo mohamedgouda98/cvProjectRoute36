@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class SkillCategory extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public static function rules()
+    {
+        return [
+            'name' => 'required|min:3'
+        ];
+    }
 }
