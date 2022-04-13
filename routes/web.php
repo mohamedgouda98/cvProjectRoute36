@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\SkillCategoryController;
@@ -38,5 +39,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::delete('/skills/delete', [SkillsController::class, 'delete'])->name('admin.skill.delete');
     Route::get('/skills/edit/{id}', [SkillsController::class, 'edit'])->name('admin.skill.edit');
     Route::put('/skills/update', [SkillsController::class, 'update'])->name('admin.skill.update');
+
+
+    /** Skills CRUD routes */
+    Route::get('/about/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
+    Route::put('/about/update', [AboutController::class, 'update'])->name('admin.about.update');
 
 });
