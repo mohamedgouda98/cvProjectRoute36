@@ -22,22 +22,44 @@
                                             @endforeach
                                         @endif
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Add Skill Category</h4>
+                                            <h4>Edit Skill</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
-                                    <form method="post" action="{{route('admin.skill.category.store')}}">
+                                    <form method="post" action="{{route('admin.skill.update')}}">
                                         @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="id" value="{{$skill->id}}">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">Name</span>
                                             </div>
-                                            <input type="text" class="form-control" name="name" placeholder="Category name" aria-label="Username">
+                                            <input type="text" class="form-control" value="{{$skill->name}}" name="name" aria-label="Username">
                                         </div>
 
                                         <div class="input-group mb-4">
-                                            <button type="submit" class="btn btn-primary">Add</button>
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon5">Number</span>
+                                            </div>
+                                            <input type="number" value="{{$skill->number}}" class="form-control" name="number" placeholder="Skill number" aria-label="Username">
+                                        </div>
+
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon5">Category</span>
+                                            </div>
+
+                                            <select name="skill_category_id">
+                                                @foreach($skillCategories as $skillCategory)
+                                                    <option @if($skillCategory->id == $skill->skill_category_id)selected @endif  value="{{$skillCategory->id}}">{{$skillCategory->name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
+                                        <div class="input-group mb-4">
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
 
                                     </form>

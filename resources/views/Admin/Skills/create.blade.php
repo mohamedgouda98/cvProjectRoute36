@@ -21,20 +21,48 @@
                                                 </div>
                                             @endforeach
                                         @endif
+
+                                        @if(\Illuminate\Support\Facades\Session::has('done'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{\Illuminate\Support\Facades\Session::get('done')}}
+                                            </div>
+                                        @endif
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Add Skill Category</h4>
+                                            <h4>Add Skill</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
-                                    <form method="post" action="{{route('admin.skill.category.store')}}">
+                                    <form method="post" action="{{route('admin.skill.store')}}">
                                         @csrf
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">Name</span>
                                             </div>
-                                            <input type="text" class="form-control" name="name" placeholder="Category name" aria-label="Username">
+                                            <input type="text" class="form-control" name="name" placeholder="skill name" aria-label="Username">
                                         </div>
+
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon5">Number</span>
+                                            </div>
+                                            <input type="number" class="form-control" name="number" placeholder="Skill number" aria-label="Username">
+                                        </div>
+
+                                        <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon5">Category</span>
+                                            </div>
+
+                                            <select name="skill_category_id">
+                                                @foreach($skillCategories as $skillCategory)
+                                                    <option value="{{$skillCategory->id}}">{{$skillCategory->name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
+
 
                                         <div class="input-group mb-4">
                                             <button type="submit" class="btn btn-primary">Add</button>

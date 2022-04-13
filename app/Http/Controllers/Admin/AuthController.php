@@ -22,6 +22,6 @@ class AuthController extends Controller
             return redirect(route('admin.home'));
         }
 
-        redirect()->back();
+        return back()->withErrors(['user not found']);
     }
 }

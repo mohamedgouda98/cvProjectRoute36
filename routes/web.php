@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\SkillCategoryController;
+use App\Http\Controllers\SkillsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin/login', [AuthController::class, 'loginPage']);
+Route::get('/admin/login', [AuthController::class, 'loginPage'])->name('login');
 Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+
+    /** Skills Categories CRUD routes */
+    Route::get('/skills/categories', [SkillCategoryController::class, 'index'])->name('admin.skill.category.index');
     Route::get('/skills/category/create', [SkillCategoryController::class, 'create'])->name('admin.skill.category.create');
     Route::post('/skills/category/store', [SkillCategoryController::class, 'store'])->name('admin.skill.category.store');
+    Route::delete('/skills/category/delete', [SkillCategoryController::class, 'delete'])->name('admin.skill.category.delete');
+    Route::get('/skills/category/edit/{id}', [SkillCategoryController::class, 'edit'])->name('admin.skill.category.edit');
+    Route::put('/skills/category/update', [SkillCategoryController::class, 'update'])->name('admin.skill.category.update');
+
+    /** Skills CRUD routes */
+    Route::get('/skills', [SkillsController::class, 'index'])->name('admin.skill.index');
+    Route::get('/skills/create', [SkillsController::class, 'create'])->name('admin.skill.create');
+    Route::post('/skills/store', [SkillsController::class, 'store'])->name('admin.skill.store');
+    Route::delete('/skills/delete', [SkillsController::class, 'delete'])->name('admin.skill.delete');
+    Route::get('/skills/edit/{id}', [SkillsController::class, 'edit'])->name('admin.skill.edit');
+    Route::put('/skills/update', [SkillsController::class, 'update'])->name('admin.skill.update');
+
 });

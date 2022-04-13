@@ -26,6 +26,13 @@
 
                         <h1 class="">Log In to <a href="index.html"><span class="brand-name">CORK</span></a></h1>
                         <p class="signup-link">New Here? <a href="auth_register.html">Create an account</a></p>
+                        @if($errors->any())
+                            @foreach($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">
+                                    {{$error}}
+                                </div>
+                            @endforeach
+                        @endif
                         <form class="text-left" method="post" action="{{route('admin.login')}}">
                             @csrf
                             <div class="form">
