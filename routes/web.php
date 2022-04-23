@@ -4,7 +4,9 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\SkillCategoryController;
+use App\Http\Controllers\portfolioCategoryController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\portfolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +42,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/skills/edit/{id}', [SkillsController::class, 'edit'])->name('admin.skill.edit');
     Route::put('/skills/update', [SkillsController::class, 'update'])->name('admin.skill.update');
 
+    /** Porftolio Categories CRUD routes */
+    Route::get('/portfolio/categories', [portfolioCategoryController::class, 'index'])->name('admin.portfolio.category.index');
+    Route::get('/portfolio/category/create', [portfolioCategoryController::class, 'create'])->name('admin.portfolio.category.create');
+    Route::post('/portfolio/category/store', [portfolioCategoryController::class, 'store'])->name('admin.portfolio.category.store');
+    Route::delete('/portfolio/category/delete', [portfolioCategoryController::class, 'delete'])->name('admin.portfolio.category.delete');
+    Route::get('/portfolio/category/edit/{id}', [portfolioCategoryController::class, 'edit'])->name('admin.portfolio.category.edit');
+    Route::put('/portfolio/category/update', [portfolioCategoryController::class, 'update'])->name('admin.portfolio.category.update');
+
+    /** Porftolio  CRUD routes */
+    Route::get('/portfolio', [portfolioController::class, 'index'])->name('admin.portfolio.index');
+    Route::get('/portfolio/create', [portfolioController::class, 'create'])->name('admin.portfolio.create');
+    Route::post('/portfolio/store', [portfolioController::class, 'store'])->name('admin.portfolio.store');
+    Route::delete('/portfolio/delete', [portfolioController::class, 'delete'])->name('admin.portfolio.delete');
+    Route::get('/portfolio/edit/{id}', [portfolioController::class, 'edit'])->name('admin.portfolio.edit');
+    Route::put('/portfolio/update', [portfolioController::class, 'update'])->name('admin.portfolio.update');
 
     /** Skills CRUD routes */
     Route::get('/about/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
