@@ -3,6 +3,8 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\ProfileCtrl;
+use App\Http\Controllers\servicesCtrl;
 use App\Http\Controllers\SkillCategoryController;
 use App\Http\Controllers\SkillsController;
 use Illuminate\Support\Facades\Route;
@@ -44,5 +46,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     /** Skills CRUD routes */
     Route::get('/about/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
     Route::put('/about/update', [AboutController::class, 'update'])->name('admin.about.update');
+
+
+    /** profile routes */
+    route::get('/profile/edit',[ProfileCtrl::class,'edit'])->name('admin.profile.edit');
+    route::post('/profile/update',[ProfileCtrl::class,'update'])->name('admin.profile.update');
+
+    /** services CRUD routes */
+    Route::get('/services', [servicesCtrl::class, 'index'])->name('admin.service.index');
+    Route::get('/services/create', [servicesCtrl::class, 'create'])->name('admin.service.create');
+    Route::post('/services/store', [servicesCtrl::class, 'store'])->name('admin.service.store');
+    Route::delete('/services/delete', [servicesCtrl::class, 'delete'])->name('admin.service.delete');
+    Route::get('/services/edit/{id}', [servicesCtrl::class, 'edit'])->name('admin.service.edit');
+    Route::post('/services/update', [servicesCtrl::class, 'update'])->name('admin.service.update');
+
 
 });
