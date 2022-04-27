@@ -40,16 +40,16 @@
 
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon5">Email</span>
+                                                <span class="input-group-text" id="basic-addon5">email</span>
                                             </div>
-                                            <input type="email" class="form-control" value="{{$user->email}}" name="email" aria-label="email">
+                                            <input type="email" value="{{$user->email}}" class="form-control" name="email" placeholder="Email" aria-label="Email">
                                         </div>
 
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">Password</span>
                                             </div>
-                                            <input type="password" class="form-control" value="{{$user->name}}" name="password" aria-label="passsword">
+                                            <input type="password" value="{{$user->password}}" class="form-control" name="password" placeholder="Password" aria-label="Email">
                                         </div>
 
                                         <div class="input-group mb-4">

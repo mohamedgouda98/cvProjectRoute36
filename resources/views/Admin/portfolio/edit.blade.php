@@ -54,12 +54,12 @@
                                                 <span class="input-group-text" id="basic-addon5">category</span>
                                             </div>
                                             <select name="portfolio_category_id">
-                                                @foreach($portfolioCategory as $portfolioItems)
-                                                    <option>{{$portfolioItems->name}}</option>
+                                                @foreach($portfolioCategories as $portfolioCategory)
+                                                    <option @if($portfolioCategory->id == $portfolioList->portfolio_category_id) selected @endif >{{$portfolioCategory->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        
+
                                         <div class="input-group mb-4">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
