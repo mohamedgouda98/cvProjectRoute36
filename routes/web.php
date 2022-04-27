@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\SkillCategoryController;
 use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin/login', [AuthController::class, 'loginPage'])->name('login');
 Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
     /** Skills Categories CRUD routes */
@@ -45,4 +46,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('/about/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
     Route::put('/about/update', [AboutController::class, 'update'])->name('admin.about.update');
 
+    /** Users CRUD routes */
+    Route::get('/users', [UsersController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/create', [UsersController::class, 'create'])->name('admin.users.create');
+    Route::post('users/store', [UsersController::class, 'store'])->name('admin.users.store');
+    Route::delete('/users/delete', [UsersController::class, 'delete'])->name('admin.users.delete');
+    Route::get('/users/edit{id}', [UsersController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/update', [UsersController::class, 'update'])->name('admin.users.update');
 });

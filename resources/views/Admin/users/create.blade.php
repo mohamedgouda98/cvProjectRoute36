@@ -21,43 +21,48 @@
                                                 </div>
                                             @endforeach
                                         @endif
+
+                                        @if(\Illuminate\Support\Facades\Session::has('done'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{\Illuminate\Support\Facades\Session::get('done')}}
+                                            </div>
+                                        @endif
                                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                            <h4>Edit User</h4>
+                                            <h4>Add Skill</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
-                                    <form method="post" action="{{route('admin.users.update')}}">
+                                    <form method="post" action="{{route('admin.users.store')}}">
                                         @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="id" value="{{$user->id}}">
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">Name</span>
                                             </div>
-                                            <input type="text" class="form-control" value="{{$user->name}}" name="name" aria-label="Username">
+                                            <input type="text" class="form-control" name="name" placeholder="User Name" aria-label="Username">
                                         </div>
 
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">Email</span>
                                             </div>
-                                            <input type="email" class="form-control" value="{{$user->email}}" name="email" aria-label="email">
+                                            <input type="email" class="form-control" name="email" placeholder="Email" aria-label="Email">
                                         </div>
 
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">Password</span>
                                             </div>
-                                            <input type="password" class="form-control" value="{{$user->name}}" name="password" aria-label="passsword">
+                                            <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password">
                                         </div>
-
+                                        
                                         <div class="input-group mb-4">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>
 
                                     </form>
                                 </div>
+
 
 
                             </div>

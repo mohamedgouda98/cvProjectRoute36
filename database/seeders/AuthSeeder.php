@@ -18,9 +18,9 @@ class AuthSeeder extends Seeder
     public function run()
     {
         User::create([
-           'name' => 'gouda',
-           'email' => 'gouda@gmail.com',
-           'password' => Hash::make('12345678')
+           'name' => 'abdo',
+           'email' => 'abdo@gmail.com',
+           'password' => Hash::make('123456789')
         ]);
     }
 }
