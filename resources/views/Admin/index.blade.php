@@ -1,6 +1,4 @@
 @include('Admin.assets.header')
-
-
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">

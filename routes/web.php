@@ -3,9 +3,13 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\ProfileCtrl;
+use App\Http\Controllers\servicesCtrl;
 use App\Http\Controllers\SkillCategoryController;
+use App\Http\Controllers\portfolioCategoryController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\portfolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +45,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/skills/edit/{id}', [SkillsController::class, 'edit'])->name('admin.skill.edit');
     Route::put('/skills/update', [SkillsController::class, 'update'])->name('admin.skill.update');
 
+    /** Porftolio Categories CRUD routes */
+    Route::get('/portfolio/categories', [portfolioCategoryController::class, 'index'])->name('admin.portfolio.category.index');
+    Route::get('/portfolio/category/create', [portfolioCategoryController::class, 'create'])->name('admin.portfolio.category.create');
+    Route::post('/portfolio/category/store', [portfolioCategoryController::class, 'store'])->name('admin.portfolio.category.store');
+    Route::delete('/portfolio/category/delete', [portfolioCategoryController::class, 'delete'])->name('admin.portfolio.category.delete');
+    Route::get('/portfolio/category/edit/{id}', [portfolioCategoryController::class, 'edit'])->name('admin.portfolio.category.edit');
+    Route::put('/portfolio/category/update', [portfolioCategoryController::class, 'update'])->name('admin.portfolio.category.update');
+
+    /** Porftolio  CRUD routes */
+    Route::get('/portfolio', [portfolioController::class, 'index'])->name('admin.portfolio.index');
+    Route::get('/portfolio/create', [portfolioController::class, 'create'])->name('admin.portfolio.create');
+    Route::post('/portfolio/store', [portfolioController::class, 'store'])->name('admin.portfolio.store');
+    Route::delete('/portfolio/delete', [portfolioController::class, 'delete'])->name('admin.portfolio.delete');
+    Route::get('/portfolio/edit/{id}', [portfolioController::class, 'edit'])->name('admin.portfolio.edit');
+    Route::put('/portfolio/update', [portfolioController::class, 'update'])->name('admin.portfolio.update');
 
     /** Skills CRUD routes */
     Route::get('/about/edit', [AboutController::class, 'edit'])->name('admin.about.edit');
@@ -53,4 +72,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::delete('/users/delete', [UsersController::class, 'delete'])->name('admin.users.delete');
     Route::get('/users/edit{id}', [UsersController::class, 'edit'])->name('admin.users.edit');
     Route::put('/users/update', [UsersController::class, 'update'])->name('admin.users.update');
+
+    /** profile routes */
+    route::get('/profile/edit',[ProfileCtrl::class,'edit'])->name('admin.profile.edit');
+    route::post('/profile/update',[ProfileCtrl::class,'update'])->name('admin.profile.update');
+
+    /** services CRUD routes */
+    Route::get('/services', [servicesCtrl::class, 'index'])->name('admin.service.index');
+    Route::get('/services/create', [servicesCtrl::class, 'create'])->name('admin.service.create');
+    Route::post('/services/store', [servicesCtrl::class, 'store'])->name('admin.service.store');
+    Route::delete('/services/delete', [servicesCtrl::class, 'delete'])->name('admin.service.delete');
+    Route::get('/services/edit/{id}', [servicesCtrl::class, 'edit'])->name('admin.service.edit');
+    Route::post('/services/update', [servicesCtrl::class, 'update'])->name('admin.service.update');
+
+
 });

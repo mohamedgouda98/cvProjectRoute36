@@ -15,11 +15,11 @@ class AboutSedder extends Seeder
      */
     public function run()
     {
-        $abouts = About::get();
-        foreach ($abouts as $about)
-        {
-            $about->delete();
-        }
+//        $abouts = About::get();
+//        foreach ($abouts as $about)
+//        {
+//            $about->delete();
+//        }
 
         About::create([
             'name'=> 'test',
