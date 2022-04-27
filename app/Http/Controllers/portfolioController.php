@@ -21,12 +21,15 @@ class portfolioController extends Controller
 
     public function store(Request $request) {
 
+        $PortfolioName = time() .$request->file('image')->getClientOriginalName();
+        $PortfolioPath = 'portfolio';
+        $request->file('image')->move($PortfolioPath, $PortfolioName);
+
         portfolio::create([
             'title' => $request->title,
-            'image' => $request->image,
+            'image' => $PortfolioName,
             'tags' => $request->title,
             'portfolio_category_id' => $request->portfolio_category_id,
-
         ]);
         return redirect()->back();
     }
@@ -38,10 +41,17 @@ class portfolioController extends Controller
     }
     public function update(Request $request) {
 
+        if($request->hasFile('image'))
+        {
+            $PortfolioName = time() .$request->file('image')->getClientOriginalName();
+            $PortfolioPath = 'portfolio';
+            $request->file('image')->move($PortfolioPath, $PortfolioName);
+        }
+
         $portfolio = portfolio::find($request->id);
         $portfolio->update([
             'title' => $request->title,
-            'image' => $request->image,
+            'image' => (isset($PortfolioName))? $PortfolioName : $portfolio->image,
             'tags' => $request->tags,
             'portfolio_category_id' => $request->portfolio_category_id
         ]);

@@ -27,7 +27,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
-                                    <form method="post" action="{{route('admin.about.update')}}">
+                                    <form method="post" action="{{route('admin.about.update')}}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <input type="hidden" name="id" value="{{$about->id}}">
@@ -87,14 +87,14 @@
 
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon5">gender</span>
+                                                <span class="input-group-text" id="basic-addon5">Image</span>
                                             </div>
                                             <input type="file" class="form-control" name="image" aria-label="Username">
                                         </div>
 
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon5">gender</span>
+                                                <span class="input-group-text" id="basic-addon5">CV</span>
                                             </div>
                                             <input type="file" class="form-control" name="cv" aria-label="Username">
                                         </div>

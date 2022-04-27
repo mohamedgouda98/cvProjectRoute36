@@ -27,7 +27,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-content widget-content-area">
-                                    <form method="post" action="{{route('admin.portfolio.store')}}">
+                                    <form method="post" action="{{route('admin.portfolio.store')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
@@ -39,7 +39,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">image</span>
                                             </div>
-                                            <input type="text" class="form-control" name="image" placeholder=" image" aria-label="Username">
+                                            <input type="file" class="form-control" name="image" aria-label="Username">
                                         </div>
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">

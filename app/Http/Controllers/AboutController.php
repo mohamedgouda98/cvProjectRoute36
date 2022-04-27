@@ -16,6 +16,20 @@ class AboutController extends Controller
 
     public function update(Request $request)
     {
+        if($request->hasFile('image'))
+        {
+            $imageName = time() .$request->file('image')->getClientOriginalName();
+            $imagePath = 'images';
+            $request->file('image')->move($imagePath, $imageName);
+        }
+
+        if($request->hasFile('cv'))
+        {
+            $CVName = time() .$request->file('cv')->getClientOriginalName();
+            $CvPath = 'cv';
+            $request->file('cv')->move($CvPath, $CVName);
+        }
+
         $about = About::first();
         $about->update([
             'name' => $request->name,
@@ -25,6 +39,8 @@ class AboutController extends Controller
             'lives_in' => $request->lives_in,
             'age' => $request->age,
             'gender' => $request->gender,
+            'image' => (isset($imageName)) ? $imageName : $about->image,
+            'cv' => (isset($CVName)) ? $CVName : $about->cv
         ]);
         Session::flash('done', 'About Was Updated');
         return back();

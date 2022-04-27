@@ -21,7 +21,8 @@ class portfolioCategoryController extends Controller
     public function store(Request $request)
     {
         portfolioCategory::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'data_filer_name' => $request->data_filter_name
         ]);
         return redirect()->back();
     }
@@ -49,7 +50,8 @@ class portfolioCategoryController extends Controller
         $portfolioCategory = portfolioCategory::find($request->id);
 
         $portfolioCategory->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'data_filer_name' => $request->data_filter_name
         ]);
         Session::flash('done', 'portfolioCategory Was Updated');
         return redirect(route('admin.portfolio.category.index'));

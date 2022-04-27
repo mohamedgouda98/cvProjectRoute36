@@ -17,4 +17,9 @@ class SkillCategory extends Model
             'name' => 'required|min:3'
         ];
     }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class, 'skill_category_id', 'id');
+    }
 }

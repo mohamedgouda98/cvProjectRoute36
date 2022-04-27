@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\HomeController as UserHomeController;
 use App\Http\Controllers\ProfileCtrl;
 use App\Http\Controllers\servicesCtrl;
 use App\Http\Controllers\SkillCategoryController;
@@ -27,7 +28,7 @@ Route::get('/admin/login', [AuthController::class, 'loginPage'])->name('login');
 Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+    Route::get('/', [AdminHomeController::class, 'index'])->name('admin.home');
 
     /** Skills Categories CRUD routes */
     Route::get('/skills/categories', [SkillCategoryController::class, 'index'])->name('admin.skill.category.index');
@@ -87,3 +88,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 
 });
+
+Route::get('/', [UserHomeController::class, 'index']);

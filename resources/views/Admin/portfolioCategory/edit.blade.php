@@ -39,6 +39,14 @@
                                         </div>
 
                                         <div class="input-group mb-4">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon5">Filter Name</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="data_filter_name" value="{{$portfolioCategory->data_filter_name}}" aria-label="Filter NAme">
+                                        </div>
+
+
+                                        <div class="input-group mb-4">
                                             <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
 

@@ -35,19 +35,19 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">title</span>
                                             </div>
-                                            <input type="text" class="form-control" value="{{$portfolioList->title}}" name="name" aria-label="Username">
+                                            <input type="text" class="form-control" value="{{$portfolioList->title}}" name="title" aria-label="Username">
                                         </div>
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">image</span>
                                             </div>
-                                            <input type="text" class="form-control" value="{{$portfolioList->image}}" name="name" aria-label="Username">
+                                            <input type="file" class="form-control" name="image" aria-label="Username">
                                         </div>
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon5">tags</span>
                                             </div>
-                                            <input type="text" class="form-control" value="{{$portfolioList->tags}}" name="name" aria-label="Username">
+                                            <input type="text" class="form-control" value="{{$portfolioList->tags}}" name="tags" aria-label="Username">
                                         </div>
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">
@@ -55,7 +55,7 @@
                                             </div>
                                             <select name="portfolio_category_id">
                                                 @foreach($portfolioCategories as $portfolioCategory)
-                                                    <option @if($portfolioCategory->id == $portfolioList->portfolio_category_id) selected @endif >{{$portfolioCategory->name}}</option>
+                                                    <option @if($portfolioCategory->id == $portfolioList->portfolio_category_id) selected @endif value="{{$portfolioCategory->id}}" >{{$portfolioCategory->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
