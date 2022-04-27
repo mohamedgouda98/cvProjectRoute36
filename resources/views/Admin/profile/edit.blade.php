@@ -69,9 +69,8 @@
                                         <span class="input-group-text" id="basic-addon5">type</span>
                                     </div>
                                     <select class="form-control" name="type" id="">
-                                        <option value="{{$profile->type}}" >{{$profile->type}}</option>
-                                        <option value="edu">edu</option>
-                                        <option value="exp">exp</option>
+                                        <option value="edu" @if($profile->type == 'edu') selected @endif>edu</option>
+                                        <option value="exp" @if($profile->type == 'exp') selected @endif>exp</option>
 
                                     </select>
                                 </div>
